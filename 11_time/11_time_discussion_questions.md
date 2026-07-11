@@ -1,12 +1,12 @@
-# 11 — Time Series: Discussion Questions
+# 11 · Time Series: Discussion Questions
 
 ## Time Series Basics (11.1)
 1. The notebook converts `dteday` to datetime and then sets it as the index in two separate steps. Why is the order important? What would break if you called `set_index("dteday")` before calling `pd.to_datetime()`?
-2. `df.loc["2011"]` returns 365 rows. `df.loc["2011-06"]` returns 30. `df.loc["2011-06-15"]` would return a single row. This is called partial string indexing — the precision of the string controls the size of the selection. What would happen if you used `df.loc["2011-06-15":"2011-06-20"]`? How does this differ from boolean indexing with `(df.index >= "2011-06-15") & (df.index <= "2011-06-20")`? Give one scenario where you would prefer the partial string approach and one where boolean indexing is more flexible.
+2. `df.loc["2011"]` returns 365 rows. `df.loc["2011-06"]` returns 30. `df.loc["2011-06-15"]` would return a single row. This is called partial string indexing: the precision of the string controls the size of the selection. What would happen if you used `df.loc["2011-06-15":"2011-06-20"]`? How does this differ from boolean indexing with `(df.index >= "2011-06-15") & (df.index <= "2011-06-20")`? Give one scenario where you would prefer the partial string approach and one where boolean indexing is more flexible.
 
 ## Resampling (11.2)
 3. `.resample("ME").sum()` and `.resample("ME").mean()` both produce 24 rows, one per month. For the `cnt` column (daily rental count), the sum is roughly 31 times larger than the mean in most months. For a column like `temp` (daily average temperature), which aggregation makes more sense, and why? What information would you lose by summing temperature?
-4. The four frequency strings shown in the notebook — `"W"`, `"ME"`, `"QE"`, `"YE"` — all produce different numbers of rows from the same 731-day dataset. If you resampled to `"YE"` and then tried to compute a year-over-year percent change with `.pct_change()`, how many non-NaN values would you get? Why is annual resampling often too coarse for `.pct_change()` analysis?
+4. The four frequency strings shown in the notebook (`"W"`, `"ME"`, `"QE"`, `"YE"`) all produce different numbers of rows from the same 731-day dataset. If you resampled to `"YE"` and then tried to compute a year-over-year percent change with `.pct_change()`, how many non-NaN values would you get? Why is annual resampling often too coarse for `.pct_change()` analysis?
 
 ## Rolling Windows (11.3)
 5. A 7-day rolling mean produces `NaN` for the first six rows. A 30-day rolling mean produces `NaN` for the first 29 rows. If your dataset only covered a single month (31 days), how many usable rows would the 30-day rolling mean produce? What does this tell you about choosing a window size relative to dataset length?

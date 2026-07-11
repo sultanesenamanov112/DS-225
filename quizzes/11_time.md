@@ -15,13 +15,13 @@
 - [ ] The DataFrame index must always be a date column
 
 ### With a `DatetimeIndex`, what does `df.loc["2011-06"]` return?
-- [x] All rows from June 2011 — partial-string indexing selects by the precision you give (year, month, etc.)
+- [x] All rows from June 2011; partial-string indexing selects by the precision you give (year, month, etc.)
 - [ ] A single row for June 1, 2011 only
 - [ ] A `KeyError`, since the index contains full dates
 - [ ] The column named `"2011-06"`
 
 ### What would `df.loc["2011"]` do if the index were a plain integer range instead of a `DatetimeIndex`?
-- [x] Raise a `KeyError` — partial-string date indexing only works on a `DatetimeIndex`
+- [x] Raise a `KeyError`; partial-string date indexing only works on a `DatetimeIndex`
 - [ ] Return all 2011 rows correctly
 - [ ] Return the single row at integer position 2011
 - [ ] Silently return an empty DataFrame
@@ -59,13 +59,13 @@
 - [ ] Always use `.sum()`; `.mean()` is invalid on time-series data
 
 ### In current pandas, which frequency strings denote month-end and quarter-end?
-- [x] `"ME"` and `"QE"` — the older `"M"` and `"Q"` are deprecated
+- [x] `"ME"` and `"QE"`; the older `"M"` and `"Q"` are deprecated
 - [ ] `"M"` and `"Q"` are still the current standard forms
 - [ ] `"MONTH"` and `"QUARTER"` are the full string names
 - [ ] `"30D"` and `"90D"` are the only valid alternatives
 
 ### How does resampling change the size of the series?
-- [x] It reduces the number of rows — e.g. 731 daily rows become 106 weekly or 24 monthly rows
+- [x] It reduces the number of rows; e.g. 731 daily rows become 106 weekly or 24 monthly rows
 - [ ] It keeps the same number of rows, filling any gaps with `NaN`
 - [ ] It always doubles the number of rows in the series
 - [ ] It leaves the row count entirely unchanged
@@ -85,7 +85,7 @@
 ## 11_3 · Rolling Windows
 
 ### What does `df["cnt"].rolling(7).mean()` compute?
-- [x] For each day, the average of that day and the six days before it — a 7-day moving average
+- [x] For each day, the average of that day and the six days before it, a 7-day moving average
 - [ ] The total count summed over every 7-day bin, reducing the row count
 - [ ] The average of the next 7 days looking forward
 - [ ] A single overall average across all 7-day periods
@@ -109,7 +109,7 @@
 - [ ] The two window sizes produce identical trend lines
 
 ### What does `df["cnt"].rolling(30).std()` show?
-- [x] The rolling variability — how much the daily count bounces around within each 30-day window
+- [x] The rolling variability: how much the daily count bounces around within each 30-day window
 - [ ] The rolling total summed over each 30-day window
 - [ ] The direction of the trend over each 30-day period
 - [ ] The number of missing values within each 30-day window
@@ -141,7 +141,7 @@
 - [ ] They return the column name instead of the extreme value
 
 ### Why prefer `.pct_change()` over `.diff()` when comparing busy and quiet periods?
-- [x] Absolute change has a scale problem — a drop of 500 means more in January (low baseline) than July (high baseline); percent change is comparable across scales
+- [x] Absolute change has a scale problem: a drop of 500 means more in January (low baseline) than July (high baseline); percent change is comparable across scales
 - [ ] `.diff()` cannot handle negative numbers in the series
 - [ ] `.pct_change()` automatically removes missing values
 - [ ] They always give the same relative ranking of changes
@@ -153,7 +153,7 @@
 - [ ] Group by month name and subtract adjacent groups
 
 ### On monthly data, what does `.pct_change(12)` measure?
-- [x] Year-over-year change — each month compared to the same month one year earlier, removing the seasonal effect
+- [x] Year-over-year change: each month compared to the same month one year earlier, removing the seasonal effect
 - [ ] The cumulative change over the last 12 days
 - [ ] A 12-month rolling average of the percent change
 - [ ] The total change since the very first month only
@@ -179,13 +179,13 @@
 - [ ] `df["cnt"].rolling("month").mean()`
 
 ### In `df.index.dayofweek`, what does the value 0 represent?
-- [x] Monday — the convention runs 0 (Monday) through 6 (Sunday)
-- [ ] Sunday — the week starts on Sunday by convention
+- [x] Monday; the convention runs 0 (Monday) through 6 (Sunday)
+- [ ] Sunday; the week starts on Sunday by convention
 - [ ] The first day present in the dataset
 - [ ] A missing or unknown weekday value
 
 ### Why does the day-of-week chart for total rentals look fairly flat, while registered and casual riders don't?
-- [x] The two user types pull in opposite directions — registered users peak on weekdays, casual users on weekends — so the total evens out
+- [x] The two user types pull in opposite directions (registered users peak on weekdays, casual users on weekends), so the total evens out
 - [ ] The total chart is computed using the wrong aggregation
 - [ ] Weekend days have no rental data in the dataset
 - [ ] Total rentals are exactly the same on every day of the week

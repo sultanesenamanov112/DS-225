@@ -12,11 +12,11 @@
 - [x] An automatically generated 0-based `RangeIndex` of row numbers
 - [ ] The passenger name column from the parent DataFrame
 - [ ] A second copy of the age values, mirrored from the original column
-- [ ] Nothing — a Series has no index until you assign one
+- [ ] Nothing; a Series has no index until you assign one
 
 ### `s.loc[5]` and `s.iloc[5]` return the same row when the index is `0, 1, 2, …`. When do they start to diverge?
 - [x] After filtering or sorting, when index labels no longer match positions
-- [ ] Never — both `.loc[]` and `.iloc[]` are completely interchangeable
+- [ ] Never; both `.loc[]` and `.iloc[]` are completely interchangeable
 - [ ] Only when the Series contains missing or null values in the data
 - [ ] Only for Series that contain more than 1,000 elements
 
@@ -71,31 +71,31 @@
 - [ ] A Series is built by stacking several DataFrames vertically
 
 ### What does `df.shape` return for the Titanic data?
-- [x] A tuple `(rows, columns)` — here `(887, 8)`
+- [x] A tuple `(rows, columns)`, here `(887, 8)`
 - [ ] The number of rows only, as a single integer
 - [ ] A list of the column names in order
 - [ ] The total number of cells (rows × columns)
 
 ### `df.dtypes` shows `survived` and `pclass` as `int64`. Why does the notebook flag this as something to fix later?
-- [x] They represent categories (0/1 and 1/2/3), not magnitudes — pandas treats them as plain integers until told otherwise
+- [x] They represent categories (0/1 and 1/2/3), not magnitudes; pandas treats them as plain integers until told otherwise
 - [ ] `int64` columns cannot be used in filtering operations
 - [ ] pandas cannot group by any integer column
 - [ ] `int64` uses more memory than any other available dtype
 
 ### Why is `df.info()` recommended as your standard first call on a new dataset?
-- [x] It combines shape, column names, dtypes, and non-null counts — missing data shows up immediately
+- [x] It combines shape, column names, dtypes, and non-null counts, so missing data shows up immediately
 - [ ] It deletes any rows that contain missing values automatically
 - [ ] It is the only way to view the first few rows of data
 - [ ] It converts every column to its correct data type automatically
 
 ### What is the difference between `df["age"]` and `df[["age"]]`?
 - [x] `df["age"]` returns a Series; `df[["age"]]` (a list of names) returns a one-column DataFrame
-- [ ] They are identical — the extra brackets are silently ignored
+- [ ] They are identical; the extra brackets are silently ignored
 - [ ] `df["age"]` returns a DataFrame; `df[["age"]]` returns a Series
 - [ ] `df[["age"]]` raises a syntax error in current pandas
 
 ### `df["has_family"] = (df["sibsp"] > 0) | (df["parch"] > 0)` is an example of what?
-- [x] Feature engineering — deriving a new column from existing ones
+- [x] Feature engineering: deriving a new column from existing ones
 - [ ] Filtering rows by a boolean condition
 - [ ] Dropping an unwanted column from the DataFrame
 - [ ] Renaming an existing column to a new label
@@ -107,7 +107,7 @@
 - [ ] You must call `.drop()` twice before the change takes effect
 
 ### In `df.describe()`, the `survived` column has a mean of about 0.38. What does that mean represent?
-- [x] The proportion of passengers who survived — the mean of a 0/1 column equals the survival rate
+- [x] The proportion of passengers who survived: the mean of a 0/1 column equals the survival rate
 - [ ] The average passenger ID number in the dataset
 - [ ] The number of survivors divided by the number of columns
 - [ ] A meaningless value, since you cannot average a categorical variable
@@ -127,7 +127,7 @@
 - [ ] `.loc[0:5]` returns five rows; `.iloc[0:5]` returns six rows
 
 ### How do you keep only the rows where `survived` equals 1?
-- [x] `df.loc[df["survived"] == 1]` — pass a boolean mask to `.loc[]`
+- [x] `df.loc[df["survived"] == 1]`: pass a boolean mask to `.loc[]`
 - [ ] `df.loc[survived = 1]`
 - [ ] `df[survived == 1]` without referencing `df` inside the brackets
 - [ ] `df.filter("survived == 1")`
@@ -145,7 +145,7 @@
 - [ ] `df.loc[df["pclass"].contains(1, 2)]`
 
 ### What does the `~` operator do in `df.loc[~(df["survived"] == 1)]`?
-- [x] It negates the boolean mask — keeping rows where the condition is `False`
+- [x] It negates the boolean mask, keeping rows where the condition is `False`
 - [ ] It sorts the result in reverse alphabetical order
 - [ ] It selects only the last row that matches the condition
 - [ ] It drops the `survived` column from the result
@@ -165,10 +165,10 @@
 ## 06_4 · Data Cleaning
 
 ### What is the standard first step for finding missing data, and what does it return?
-- [x] `df.isnull().sum()` — the count of missing (`NaN`) values in each column
-- [ ] `df.dropna()` — returns the rows that contain missing values
-- [ ] `df.missing()` — returns a list of columns that have missing values
-- [ ] `df.describe()` — returns the percentage of missing values per column
+- [x] `df.isnull().sum()`: the count of missing (`NaN`) values in each column
+- [ ] `df.dropna()`: returns the rows that contain missing values
+- [ ] `df.missing()`: returns a list of columns that have missing values
+- [ ] `df.describe()`: returns the percentage of missing values per column
 
 ### What does a plain `df.dropna()` do, and how does `subset=` change it?
 - [x] It drops any row with a `NaN` in *any* column; `subset=["age"]` drops only rows missing in `age`
@@ -195,7 +195,7 @@
 - [ ] `df.duplicated(drop=True)` both finds and deletes them in one call
 
 ### Why convert `pclass` and `sex` with `.astype("category")`?
-- [x] They hold a small set of distinct labels, not quantities — `category` reflects their meaning and saves memory
+- [x] They hold a small set of distinct labels, not quantities; `category` reflects their meaning and saves memory
 - [ ] It converts them into numbers so they can be averaged
 - [ ] It is required before you can group by those columns
 - [ ] It removes any missing values present in those columns
@@ -252,7 +252,7 @@
 
 ### What does grouping by two keys, `df.groupby(["pclass", "sex"])["survived"].mean()`, produce?
 - [x] A survival rate for every class-and-sex combination
-- [ ] An error — groupby only accepts a single column at a time
+- [ ] An error; groupby only accepts a single column at a time
 - [ ] The survival rate for `pclass` only, ignoring `sex`
 - [ ] Two separate DataFrames, one per grouping key
 
@@ -274,7 +274,7 @@
 - [x] Each row sums to 1, answering "of all people of this sex, what fraction survived?"
 - [ ] Each column sums to 1, answering "of all survivors, what fraction were this sex?"
 - [ ] The whole table sums to 1 across every individual cell
-- [ ] Nothing changes — raw counts are still displayed
+- [ ] Nothing changes; raw counts are still displayed
 
 ### What does adding `margins=True` to a crosstab or pivot table do?
 - [x] Adds row and column totals (an `All` line) alongside the per-group values
@@ -289,13 +289,13 @@
 - [ ] When you want a single summary number rather than a table
 
 ### Which statement about `.corr()` and the values it returns is correct?
-- [x] Pearson correlation ranges from −1 to +1 and measures linear association — it does not establish causation
+- [x] Pearson correlation ranges from −1 to +1 and measures linear association; it does not establish causation
 - [ ] Correlation ranges from 0 to 100 and proves one variable causes the other
 - [ ] A correlation of 0 means the two columns are identical
 - [ ] `.corr()` only works on a single column at a time
 
 ### The notebook finds `fare` and `survived` correlate at about +0.26, but warns this is "entangled." Why?
-- [x] First-class passengers both paid more and survived more, so fare is largely a proxy for class — correlation is not causation
+- [x] First-class passengers both paid more and survived more, so fare is largely a proxy for class; correlation is not causation
 - [ ] A correlation of +0.26 is mathematically impossible and signals a calculation bug
 - [ ] The fare directly caused the survival, which the notebook confirms
 - [ ] The two columns have different numbers of non-null rows

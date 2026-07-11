@@ -1,8 +1,8 @@
-# 07 — Data Visualization: Discussion Questions
+# 07 · Data Visualization: Discussion Questions
 
 ## Why Visualize (07.1)
 1. The notebook shows that two distributions can have the same mean and standard deviation but look completely different. Can you construct a small example (by hand or in Python) of two datasets with nearly identical `describe()` output but clearly different shapes? What does this tell you about relying on summary statistics alone?
-2. Seaborn sits "on top of" matplotlib. What does that mean technically? If you wanted to change something that seaborn does not expose as a parameter — say, the exact font used for tick labels — where would you have to go? Try to find a concrete example.
+2. Seaborn sits "on top of" matplotlib. What does that mean technically? If you wanted to change something that seaborn does not expose as a parameter (say, the exact font used for tick labels), where would you have to go? Try to find a concrete example.
 
 ## Distributions (07.2)
 3. A histogram's shape changes when you change the number of bins. A KDE's shape changes when you change the bandwidth. What is the practical difference between tuning these two parameters? When would you prefer a histogram, and when would you prefer a KDE?

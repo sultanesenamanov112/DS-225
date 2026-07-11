@@ -8,7 +8,7 @@ Course materials for CS/DS 225 at Illinois Wesleyan University, taught by Brad S
 |---|---|---|
 | [06 · pandas Intro](06_pandas_intro/) | Series, DataFrames, selecting and filtering, cleaning basics, GroupBy, pivot tables | Titanic |
 | [07 · Data Visualization](07_data_vis/) | matplotlib and seaborn: distributions, categories, relationships, faceting, polishing | Titanic (seaborn) |
-| [08 · Data Cleaning](08_data_cleaning/) | Missing data, type problems, string cleaning, regex, dates, a full cleaning pipeline | Titanic, NYC taxis, Chicago 311 |
+| [08 · Data Cleaning](08_data_cleaning/) | Missing data, type problems, string cleaning, regex, dates, a full cleaning pipeline | Titanic, auto MPG, NYC taxis, Chicago 311 |
 | [09 · Data Aggregation](09_data_aggregation/) | GroupBy in depth: multiple keys, `agg`, `transform`, `filter`, `pivot_table` | Gapminder |
 | [10 · pandas and SQL](10_pandas_sql/) | SQLite from pandas: SELECT, WHERE, GROUP BY, JOIN, and when to use which tool | Gapminder |
 | [11 · Time Series](11_time/) | Datetime indexes, resampling, rolling windows, period comparisons, seasonality | Bike share daily rentals |

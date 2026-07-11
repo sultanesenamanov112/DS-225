@@ -27,7 +27,7 @@
 - [ ] Pass a second argument with the list to query
 
 ### When is `query()` most preferable to boolean indexing?
-- [x] When there are three or more conditions — the string reads more clearly than nested `&` with parentheses
+- [x] When there are three or more conditions; the string reads more clearly than nested `&` with parentheses
 - [ ] In all cases; boolean indexing is deprecated in modern pandas
 - [ ] Only when filtering on a single condition
 - [ ] Only when the DataFrame has a datetime index
@@ -41,7 +41,7 @@
 ## 10_2 · SQLite Setup
 
 ### What makes SQLite convenient for learning SQL in a notebook?
-- [x] It runs entirely inside the Python process — no server, no install beyond the standard library — and can live in memory via `:memory:`
+- [x] It runs entirely inside the Python process, with no server and no install beyond the standard library, and can live in memory via `:memory:`
 - [ ] It requires a cloud account and an API key to use
 - [ ] It only works with the Gapminder dataset
 - [ ] It needs a separate database server process running
@@ -79,25 +79,25 @@
 ## 10_3 · WHERE
 
 ### What is the SQL `WHERE` equivalent of pandas `df.query("year == 2007")`, and what's the key syntax trap?
-- [x] `WHERE year = 2007` — SQL uses a single `=` for equality, not `==`
-- [ ] `WHERE year == 2007` — SQL requires `==` just like Python
+- [x] `WHERE year = 2007`; SQL uses a single `=` for equality, not `==`
+- [ ] `WHERE year == 2007`; SQL requires `==` just like Python
 - [ ] `FILTER year = 2007`
 - [ ] `HAVING year = 2007`
 
 ### When mixing `AND` and `OR`, why are parentheses important, as in `WHERE year = 2007 AND (lifeExp > 80 OR lifeExp < 45)`?
-- [x] SQL evaluates `AND` before `OR`, so without parentheses the grouping — and the result — would be different
+- [x] SQL evaluates `AND` before `OR`, so without parentheses the grouping, and the result, would be different
 - [ ] Parentheses are purely cosmetic and have no effect in SQL
 - [ ] `OR` is evaluated before `AND`, so parentheses around `AND` are needed
 - [ ] SQL ignores all parentheses in WHERE clauses
 
 ### What does `WHERE country IN ('Japan', 'China', 'India')` do?
-- [x] Keeps rows where `country` matches any value in the list — cleaner than chaining several `OR` conditions
+- [x] Keeps rows where `country` matches any value in the list, cleaner than chaining several `OR` conditions
 - [ ] Keeps rows where `country` equals the entire list as one value
 - [ ] Excludes those three countries from the result
 - [ ] Joins the three matching countries into a single combined row
 
 ### What does `WHERE year BETWEEN 1990 AND 2007` match?
-- [x] Rows where `year` is in the inclusive range [1990, 2007] — shorthand for `year >= 1990 AND year <= 2007`
+- [x] Rows where `year` is in the inclusive range [1990, 2007], shorthand for `year >= 1990 AND year <= 2007`
 - [ ] Rows strictly between 1990 and 2007, with both endpoints excluded
 - [ ] Only the exact years 1990 and 2007
 - [ ] Rows that fall outside that year range
@@ -129,13 +129,13 @@
 - [ ] `COUNT(*)`, `SUM(col)`, and `MEDIAN(col)`
 
 ### What is the difference between `COUNT(*)` and `COUNT(DISTINCT country)` within a group?
-- [x] `COUNT(*)` counts all rows; `COUNT(DISTINCT country)` counts unique countries — the SQL equivalent of `nunique()`
+- [x] `COUNT(*)` counts all rows; `COUNT(DISTINCT country)` counts unique countries, the SQL equivalent of `nunique()`
 - [ ] They always give the same number for any dataset
 - [ ] `COUNT(*)` counts columns; `COUNT(DISTINCT)` counts rows
 - [ ] `COUNT(DISTINCT)` counts only null values
 
 ### Why can't you put `AVG(gdpPercap) > 20000` in a `WHERE` clause?
-- [x] `WHERE` is evaluated before grouping, so no aggregate exists yet — filtering on an aggregate must use `HAVING`
+- [x] `WHERE` is evaluated before grouping, so no aggregate exists yet; filtering on an aggregate must use `HAVING`
 - [ ] `WHERE` cannot use the `>` comparison operator
 - [ ] `AVG` is not a valid aggregate function in SQLite
 - [ ] You must use `WHERE` for all conditions; `HAVING` does not exist in SQL
@@ -147,7 +147,7 @@
 - [ ] `HAVING` sorts the groups in the result
 
 ### How does SQL group by two keys, the equivalent of `groupby(["continent", "year"])`?
-- [x] `GROUP BY continent, year` — one result row per unique combination
+- [x] `GROUP BY continent, year`: one result row per unique combination
 - [ ] `GROUP BY continent AND year`
 - [ ] `GROUP BY continent THEN year`
 - [ ] You can only group by one column at a time in SQL
@@ -167,7 +167,7 @@
 - [ ] `measurements.join(countries, how="outer")`
 
 ### What does an `INNER JOIN` do with a row whose key has no match in the other table?
-- [x] Drops it — only rows with a matching key in both tables survive (e.g. a fake "Narnia" row disappears)
+- [x] Drops it; only rows with a matching key in both tables survive (e.g. a fake "Narnia" row disappears)
 - [ ] Keeps it and fills the other table's columns with `NULL`
 - [ ] Raises an error when an unmatched row is encountered
 - [ ] Duplicates it and flags it for review
@@ -185,7 +185,7 @@
 - [ ] They sort the joined result by the aliased table name
 
 ### In `... INNER JOIN countries AS c ON m.country = c.country`, what does the `ON` clause specify?
-- [x] The join condition — which column in each table holds the matching key
+- [x] The join condition: which column in each table holds the matching key
 - [ ] The columns to return in the SELECT output
 - [ ] The sort order of the joined result
 - [ ] A row filter applied after the join is complete
@@ -211,7 +211,7 @@
 - [ ] Renaming columns in the output
 
 ### When is SQL the better tool than pandas?
-- [x] When the data lives in a database and is too large to load entirely into memory — SQL filters/aggregates server-side
+- [x] When the data lives in a database and is too large to load entirely into memory; SQL filters/aggregates server-side
 - [ ] When you need complex regex string parsing operations
 - [ ] When you want to produce a seaborn visualization
 - [ ] When the dataset has fewer than 100 rows

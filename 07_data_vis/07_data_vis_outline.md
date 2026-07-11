@@ -1,4 +1,4 @@
-# 07 — Data Visualization: Module Outline
+# 07 · Data Visualization: Module Outline
 
 ## Audience
 Undergrad CS and data science majors with Python experience and module 06 pandas skills; no prior data visualization exposure.

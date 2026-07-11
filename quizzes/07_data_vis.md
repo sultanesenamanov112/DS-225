@@ -3,7 +3,7 @@
 ## 07_1 · Why Visualize
 
 ### Two columns can have identical means and standard deviations yet look completely different. What does a histogram reveal that those summary numbers cannot?
-- [x] The **shape** of the distribution — where values cluster, how skewed it is, and how many peaks there are
+- [x] The **shape** of the distribution: where values cluster, how skewed it is, and how many peaks there are
 - [ ] The exact mean and median calculated to more decimal places
 - [ ] The total number of rows in the DataFrame
 - [ ] The data type stored in that column
@@ -53,7 +53,7 @@
 - [ ] The bin count has no visible effect on the chart's appearance
 
 ### When a variable like `fare` is strongly right-skewed, what does adding `log_scale=True` do?
-- [x] Compresses the axis multiplicatively so the squashed low end spreads out and both regions become readable — without changing the data itself
+- [x] Compresses the axis multiplicatively so the squashed low end spreads out and both regions become readable, without changing the data itself
 - [ ] Removes the outliers from the dataset permanently
 - [ ] Takes the logarithm of every value and stores it in the DataFrame
 - [ ] Converts the histogram into a box plot automatically
@@ -109,7 +109,7 @@
 - [ ] The survival rate appears because `survived` is on the y-axis
 
 ### What do the thin vertical lines on top of the bars in a default `sns.barplot()` represent?
-- [x] 95% confidence intervals — the range of plausible values for the true group statistic
+- [x] 95% confidence intervals: the range of plausible values for the true group statistic
 - [ ] The maximum and minimum values in that group
 - [ ] The standard deviation, doubled, of the group values
 - [ ] Decorative error markers with no statistical meaning
@@ -135,13 +135,13 @@
 ## 07_4 · Relationships
 
 ### In a scatter plot of two numeric variables, what does an upward slope of the point cloud indicate?
-- [x] A positive association — as x increases, y tends to increase
+- [x] A positive association: as x increases, y tends to increase
 - [ ] That the two variables are identical to each other
 - [ ] A negative association between the two variables
 - [ ] That one of the variables is categorical
 
 ### Why set `alpha=0.4` on scatter points when many observations share similar values?
-- [x] Transparency reveals density — overlapping regions look darker — addressing overplotting
+- [x] Transparency reveals density (overlapping regions look darker), addressing overplotting
 - [ ] It removes any points that overlap with other points
 - [ ] It makes the chart render faster by dropping some points
 - [ ] It changes the point color to a gray shade
@@ -154,7 +154,7 @@
 
 ### If the relationship between two variables looks curved rather than straight, how can `sns.regplot()` adapt?
 - [x] Fit a polynomial with `order=2` or a flexible nonparametric curve with `lowess=True`
-- [ ] It cannot adapt — regplot only draws straight lines
+- [ ] It cannot adapt; regplot only draws straight lines
 - [ ] Set `curved=True` in the function call
 - [ ] Switch the x and y axes to straighten the relationship
 
@@ -185,13 +185,13 @@
 - [ ] `dpi=` (resolution) and `figsize=` (figure dimensions)
 
 ### The notebook encodes four variables in one scatter plot (`hue`, `size`, `style`) and calls it hard to read. What is the lesson?
-- [x] The eye can track only two or three visual properties at once; beyond that the chart becomes noise — use faceting instead
+- [x] The eye can track only two or three visual properties at once; beyond that the chart becomes noise; use faceting instead
 - [ ] seaborn has a known bug when multiple visual channels are specified
 - [ ] You should always use all available visual channels for maximum information
 - [ ] Size is the only visual channel that ever works well in practice
 
 ### What is faceting (small multiples)?
-- [x] Breaking a chart into a grid of panels — one per category value — that share the same axes so panels are directly comparable
+- [x] Breaking a chart into a grid of panels (one per category value) that share the same axes so panels are directly comparable
 - [ ] Drawing many variables together in a single crowded panel
 - [ ] Overlaying several charts using transparency to show all groups
 - [ ] Splitting the underlying data into separate CSV files
@@ -204,7 +204,7 @@
 
 ### Figure-level functions like `relplot`, `displot`, and `catplot` return a `FacetGrid`. What does that change about customizing the chart?
 - [x] You use `g.` methods (`g.set_axis_labels`, `g.set_titles`, `g.figure.suptitle`) instead of `ax.set_*` methods
-- [ ] Nothing changes — you still use the standard `ax.set_title` method
+- [ ] Nothing changes; you still use the standard `ax.set_title` method
 - [ ] You cannot customize figure-level charts at all
 - [ ] You must convert the FacetGrid back to an Axes object first
 

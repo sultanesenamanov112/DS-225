@@ -9,13 +9,13 @@
 - [ ] Integers, floats, strings, booleans, and dates
 
 ### Why is `df.info()` recommended as the very first call on a new dataset?
-- [x] In one output it shows row count, column names, non-null counts, and dtypes — enough to spot several problems at once
+- [x] In one output it shows row count, column names, non-null counts, and dtypes, enough to spot several problems at once
 - [ ] It automatically fixes all the column type problems
 - [ ] It is the only way to view the actual data values
 - [ ] It removes missing values and duplicate rows automatically
 
 ### Why is storing `pclass` (passenger class 1/2/3) as `int64` a "wrong type" problem?
-- [x] The numbers are labels, not measurements — averaging them gives a meaningless value like 2.3, with no warning
+- [x] The numbers are labels, not measurements; averaging them gives a meaningless value like 2.3, with no warning
 - [ ] `int64` columns cannot be displayed in the notebook output
 - [ ] pandas refuses to group by any integer-typed column
 - [ ] Integer columns consume more memory than any other dtype
@@ -27,7 +27,7 @@
 - [ ] It deletes the affected rows from the DataFrame
 
 ### What kind of problem does the `Name` column ("Mr. Owen Harris Braund") represent?
-- [x] A structural problem — multiple distinct pieces (title, first name, last name) packed into one field
+- [x] A structural problem: multiple distinct pieces (title, first name, last name) packed into one field
 - [ ] A missing-value problem where parts of the name are absent
 - [ ] A wrong-type problem because names cannot be stored as strings
 - [ ] A duplicate-row problem caused by repeated passenger names
@@ -47,13 +47,13 @@
 - [ ] Delete any column that contains even a single null
 
 ### What does a heatmap of `df.isnull().T` help you see?
-- [x] **Where** the missing values are — whether scattered randomly or clustered, which can signal a data-source problem
+- [x] **Where** the missing values are: whether scattered randomly or clustered, which can signal a data-source problem
 - [ ] The Pearson correlation between pairs of columns
 - [ ] The mean value of each column in the dataset
 - [ ] How many exact duplicate rows exist
 
 ### Why compare survival rates between rows with and without a recorded age?
-- [x] To check whether missingness is related to the outcome — if so, dropping those rows would bias the analysis
+- [x] To check whether missingness is related to the outcome; if so, dropping those rows would bias the analysis
 - [ ] To count the total number of rows with missing age values
 - [ ] To fill the missing ages with the survival rate as a proxy
 - [ ] To convert the age column to a category type
@@ -66,7 +66,7 @@
 
 ### When is forward-fill (`ffill()`) or backward-fill (`bfill()`) an appropriate way to fill gaps?
 - [x] When the data has a meaningful order (time series, sensor readings) so a neighboring value is a reasonable estimate
-- [ ] In all cases — it is the best default for any column type
+- [ ] In all cases; it is the best default for any column type
 - [ ] Only for string-typed columns, not numeric ones
 - [ ] Only when more than half the values in the column are missing
 
@@ -82,7 +82,7 @@
 - [x] `pd.to_numeric(col, errors="coerce")`, which parses valid numbers and turns the rest into `NaN`
 - [ ] `col.astype(int)`, which always succeeds without error
 - [ ] `col.sort_values()`, which fixes the dtype as a side effect
-- [ ] Nothing — string-based sorting is close enough for most purposes
+- [ ] Nothing; string-based sorting is close enough for most purposes
 
 ### Why use `errors="coerce"` with `pd.to_numeric()`?
 - [x] It converts unparseable values to `NaN` instead of raising an error and stopping
@@ -103,7 +103,7 @@
 - [ ] It converts the integer labels into date objects
 
 ### For a low-cardinality string column like `sex`, what is a benefit of the `category` dtype?
-- [x] Memory savings — pandas stores an integer code per row and maps it back to the string, instead of repeating the full string
+- [x] Memory savings: pandas stores an integer code per row and maps it back to the string, instead of repeating the full string
 - [ ] It forces every value to be unique across the column
 - [ ] It converts the strings to floats for arithmetic operations
 - [ ] It automatically removes any missing values in the column
@@ -150,7 +150,7 @@
 - [x] Each `.str` method returns a new Series, so the next call operates on the result, left to right
 - [ ] Because pandas runs chained `.str` calls in a random order
 - [ ] Because `.str` caches the original column values
-- [ ] You cannot — only one `.str` method call is allowed per line
+- [ ] You cannot; only one `.str` method call is allowed per line
 
 ## 08_5 · Splitting & Extracting
 
@@ -173,7 +173,7 @@
 - [ ] `.str.split(0)`
 
 ### In `str.extract(r'(\w+)\.')`, what role do the parentheses play?
-- [x] They form a **capture group** — `extract` returns only the text matched inside them, ignoring the rest of the pattern
+- [x] They form a **capture group**; `extract` returns only the text matched inside them, ignoring the rest of the pattern
 - [ ] They are required syntax with no functional effect
 - [ ] They make the match case-insensitive
 - [ ] They escape the literal period character
@@ -199,7 +199,7 @@
 - [ ] Three different date format patterns
 
 ### To strip every non-digit character from a phone number, which replacement works?
-- [x] `col.str.replace(r'[^\d]', '', regex=True)` — `[^\d]` matches anything that is not a digit
+- [x] `col.str.replace(r'[^\d]', '', regex=True)`: `[^\d]` matches anything that is not a digit
 - [ ] `col.str.replace(r'\d', '', regex=True)`
 - [ ] `col.str.strip()`
 - [ ] `col.str.replace(" ", "")` alone
@@ -211,14 +211,14 @@
 - [ ] `^` means "not", so it excludes digit characters
 
 ### To clean currency strings like `"$71.28"` before `pd.to_numeric()`, which pattern keeps the number intact?
-- [x] `r'[^\d.]'` — remove any character that is not a digit or a period
-- [ ] `r'[^\d]'` — which would also delete the decimal point
-- [ ] `r'\$'` — which only removes the dollar sign
-- [ ] `r'.'` — which matches every character in the string
+- [x] `r'[^\d.]'`: remove any character that is not a digit or a period
+- [ ] `r'[^\d]'`, which would also delete the decimal point
+- [ ] `r'\$'`, which only removes the dollar sign
+- [ ] `r'.'`, which matches every character in the string
 
 ### What do the quantifiers `+`, `*`, and `?` mean in a regex?
 - [x] One-or-more, zero-or-more, and zero-or-one of the preceding element, respectively
-- [ ] Add, multiply, and question — arithmetic and punctuation operators
+- [ ] Add, multiply, and question: arithmetic and punctuation operators
 - [ ] Exactly one, exactly two, and exactly three of the preceding element
 - [ ] Start anchor, middle anchor, and end anchor
 
@@ -231,7 +231,7 @@
 ## 08_7 · Dates & Times
 
 ### Why is sorting a column of string dates unreliable?
-- [x] Strings sort alphabetically, not chronologically — it only works for ISO `YYYY-MM-DD` format by coincidence
+- [x] Strings sort alphabetically, not chronologically; it only works for ISO `YYYY-MM-DD` format by coincidence
 - [ ] String dates cannot be sorted at all in pandas
 - [ ] Sorting strings reverses the chronological order
 - [ ] pandas refuses to sort any column with `object` dtype
@@ -246,7 +246,7 @@
 - [x] `pd.to_datetime(col, format="mixed")`, which infers the format row by row (with some ambiguity risk)
 - [ ] Dropping every row that contains a date value
 - [ ] `col.str.lower()` to normalize the string representation
-- [ ] Nothing — mixed formats cannot be parsed in pandas
+- [ ] Nothing; mixed formats cannot be parsed in pandas
 
 ### Once a column is `datetime64`, how do you extract the month or weekday name?
 - [x] The `.dt` accessor, e.g. `col.dt.month` and `col.dt.day_name()`
@@ -257,7 +257,7 @@
 ### What does subtracting two `datetime64` columns produce, and how do you get minutes from it?
 - [x] A `timedelta64` column; convert with `.dt.total_seconds() / 60`
 - [ ] A float column already expressed in minutes
-- [ ] An error — you cannot subtract two date columns
+- [ ] An error; you cannot subtract two date columns
 - [ ] A string column showing the difference as text
 
 ### What do `.dt.floor("h")` and `.dt.round("h")` let you do?
@@ -269,19 +269,19 @@
 ## 08_8 · A Complete Pipeline
 
 ### Why does the order of cleaning steps matter in a pipeline?
-- [x] Steps depend on one another — e.g. you can't parse a date column you haven't loaded, or fill a null in a column you already dropped
-- [ ] It doesn't matter — any order produces the identical result
+- [x] Steps depend on one another; e.g. you can't parse a date column you haven't loaded, or fill a null in a column you already dropped
+- [ ] It doesn't matter; any order produces the identical result
 - [ ] Alphabetical order of steps is required by pandas
 - [ ] Dropping columns must always be the last step
 
 ### How does `raw.nunique()` help diagnose a new dataset?
-- [x] Columns with only one unique value carry no information and can be dropped — something `info()` alone wouldn't reveal
+- [x] Columns with only one unique value carry no information and can be dropped, something `info()` alone wouldn't reveal
 - [ ] It counts the total missing values per column
 - [ ] It lists all the duplicate rows in the dataset
 - [ ] It converts low-cardinality columns to category dtype
 
 ### A column is missing 87% of its values. What is the pipeline's recommended action?
-- [x] Drop it — a column empty for nearly nine of ten rows is almost never useful and its present rows may be unrepresentative
+- [x] Drop it; a column empty for nearly nine of ten rows is almost never useful and its present rows may be unrepresentative
 - [ ] Fill all the gaps with the value 0
 - [ ] Forward-fill the entire column from the first non-null value
 - [ ] Keep it and ignore the high missingness rate

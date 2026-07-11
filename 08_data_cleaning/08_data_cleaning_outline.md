@@ -1,4 +1,4 @@
-# 08 — Data Cleaning: Module Outline
+# 08 · Data Cleaning: Module Outline
 
 ## Audience
 Undergrad CS and data science majors with Python and pandas experience (modules 06 and 07); no prior data cleaning or regex exposure.

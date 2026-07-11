@@ -1,4 +1,4 @@
-# 06 — Pandas Intro: Glossary
+# 06 · Pandas Intro: Glossary
 
 **aggregation** — A function that reduces many values to one (e.g., mean, sum, count).
 

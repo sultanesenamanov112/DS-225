@@ -1,4 +1,4 @@
-# 07 — Data Visualization: Glossary
+# 07 · Data Visualization: Glossary
 
 **aesthetic mapping** — A rule that connects a column of data to a visible property of the chart marks (color, position, size, shape). In seaborn, `hue=`, `size=`, and `style=` are aesthetic mappings.
 

@@ -1,4 +1,4 @@
-# 11 — Time Series: Module Outline
+# 11 · Time Series: Module Outline
 
 ## Audience
 Undergrad CS and data science majors with Python, pandas, groupby, and SQL experience (modules 06–10); no prior time-series exposure.

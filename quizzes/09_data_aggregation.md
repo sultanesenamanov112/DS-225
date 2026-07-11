@@ -3,13 +3,13 @@
 ## 09_1 · Meet Gapminder
 
 ### Gapminder has 142 countries and 12 years (1952–2007). Why does it have 1,704 rows?
-- [x] It is **panel data** — each country appears once per year, so 142 × 12 = 1,704, uniquely identified by `(country, year)`
+- [x] It is **panel data**: each country appears once per year, so 142 × 12 = 1,704, uniquely identified by `(country, year)`
 - [ ] There are 1,704 distinct countries in the dataset
 - [ ] Each country has a different random number of year rows
 - [ ] 1,704 is the number of columns in the raw data
 
 ### `gdpPercap` has a mean of about `$7,215` but a median of only about `$3,532`. What does that tell you?
-- [x] The distribution is right-skewed — a handful of wealthy countries pull the mean well above the median
+- [x] The distribution is right-skewed: a handful of wealthy countries pull the mean well above the median
 - [ ] The data contains errors, since the mean and median should match
 - [ ] Most countries in the dataset are wealthy
 - [ ] GDP per capita follows a normal distribution
@@ -43,7 +43,7 @@
 ### What does passing a list of columns to `df.groupby(["continent", "year"])` create?
 - [x] One group for every unique combination of the keys, with the result indexed by both keys (a MultiIndex)
 - [ ] Two separate groupby results, one per key
-- [ ] An error — groupby only accepts a single column name
+- [ ] An error; groupby only accepts a single column name
 - [ ] A group for continent only, ignoring the year key
 
 ### What is a MultiIndex?
@@ -53,13 +53,13 @@
 - [ ] A plain list of all column names in the DataFrame
 
 ### How do you retrieve the value for `("Africa", 2007)` from a MultiIndex Series?
-- [x] `result.loc[("Africa", 2007)]` — pass a tuple of the outer and inner level
+- [x] `result.loc[("Africa", 2007)]`: pass a tuple of the outer and inner level
 - [ ] `result["Africa"]["2007"]` only, with string conversion
 - [ ] `result.get("Africa 2007")` as a combined key
 - [ ] You must call `reset_index()` first; tuple access is not supported
 
 ### What does `reset_index()` do to a grouped result with a MultiIndex?
-- [x] Flattens the index levels into ordinary columns, giving one row per combination — convenient for merging, filtering, and plotting
+- [x] Flattens the index levels into ordinary columns, giving one row per combination, convenient for merging, filtering, and plotting
 - [ ] Deletes all grouping key values from the result
 - [ ] Re-runs the groupby operation from scratch
 - [ ] Sorts the rows numerically by the first index level
@@ -71,7 +71,7 @@
 - [ ] The same Series with only a reset integer index
 
 ### How do you aggregate two columns at once, e.g. `groupby(["continent","year"])[["lifeExp","gdpPercap"]].mean()`?
-- [x] Select a list of columns — the result is a DataFrame with one column per aggregated variable
+- [x] Select a list of columns; the result is a DataFrame with one column per aggregated variable
 - [ ] You cannot aggregate more than one column per groupby call
 - [ ] It returns a Series of tuples, one per group
 - [ ] You must run two separate groupby calls and concatenate the results
@@ -79,7 +79,7 @@
 ## 09_3 · agg() in Depth
 
 ### Why is a single statistic like the mean often not enough to describe a group?
-- [x] Two groups with the same mean can differ wildly in spread — you need std, min, max, etc. to see the full picture
+- [x] Two groups with the same mean can differ wildly in spread; you need std, min, max, etc. to see the full picture
 - [ ] The mean is always the wrong choice for grouped data
 - [ ] pandas cannot compute a mean within a group
 - [ ] Computing one statistic takes longer than computing several
@@ -91,7 +91,7 @@
 - [ ] A single combined summary number per group
 
 ### What is the named-aggregation syntax?
-- [x] `agg(output_name=("source_column", "function"))` — names each output column and specifies its source column and function
+- [x] `agg(output_name=("source_column", "function"))`: names each output column and specifies its source column and function
 - [ ] `agg("column", "function", "name")` as three positional arguments
 - [ ] `agg({name: column})` with a dictionary mapping names to columns
 - [ ] `agg(function=column)` with no output name specified
@@ -132,22 +132,22 @@
 - [x] 142 rows (one per country), where every country carries its continent's mean
 - [ ] 5 rows, identical to the `agg` result
 - [ ] 1 row containing the global mean
-- [ ] An error — transform cannot accept string function names
+- [ ] An error; transform cannot accept string function names
 
 ### Why can you assign a `transform()` result directly as a new column with no merge?
 - [x] It returns a Series aligned to the original index, so the values line up row-for-row automatically
 - [ ] Because transform sorts the DataFrame before returning
 - [ ] Because transform drops the index to enable alignment
-- [ ] You cannot — a merge is always required to add the result
+- [ ] You cannot; a merge is always required to add the result
 
 ### How would you build a column measuring each country's life expectancy relative to its continent's average?
 - [x] Subtract the transformed group mean: `df["lifeExp"] - df.groupby("continent")["lifeExp"].transform("mean")`
-- [ ] Use `agg("mean")` and subtract — the shapes align automatically
+- [ ] Use `agg("mean")` and subtract; the shapes align automatically
 - [ ] Use `filter()` with a lambda expression
 - [ ] This cannot be done in a single pandas operation
 
 ### Computing a within-group z-score needs the group mean and group standard deviation. How is that expressed?
-- [x] `(value - groupby.transform("mean")) / groupby.transform("std")` — two transforms, both broadcast to every row
+- [x] `(value - groupby.transform("mean")) / groupby.transform("std")`: two transforms, both broadcast to every row
 - [ ] `groupby.agg(["mean", "std"])` subtracted directly from the column
 - [ ] A single `transform("zscore")` call
 - [ ] `df.std()` divided by `df.mean()` on the full DataFrame
@@ -167,7 +167,7 @@
 - [ ] Fills missing values per group based on a condition
 
 ### Why is row-level boolean indexing the wrong tool for "keep continents whose median GDP exceeds 10,000"?
-- [x] The condition is a property of the whole group, not of each row — boolean indexing would keep scattered individual rich countries instead of whole qualifying continents
+- [x] The condition is a property of the whole group, not of each row; boolean indexing would keep scattered individual rich countries instead of whole qualifying continents
 - [ ] Boolean indexing cannot use a median in its condition
 - [ ] It would keep entire continents but in the wrong row order
 - [ ] There is no difference; both approaches give the same result
@@ -192,7 +192,7 @@
 
 ### What can you do with the result of `filter()`?
 - [x] It is a plain DataFrame, so you can chain a `groupby().agg()` (filter-then-aggregate is the most common pattern)
-- [ ] Nothing — filter results are read-only and cannot be chained
+- [ ] Nothing; filter results are read-only and cannot be chained
 - [ ] Only plot it; further aggregation is not possible
 - [ ] It must be converted back with `reset_index()` before any use
 
@@ -211,7 +211,7 @@
 - [ ] It is slower and always discouraged in modern pandas
 
 ### What does adding `columns="year"` to a pivot table do?
-- [x] Creates a two-dimensional grid — e.g. continents on rows, years across columns
+- [x] Creates a two-dimensional grid, e.g. continents on rows, years across columns
 - [ ] Selects only the `year` column for display
 - [ ] Sorts the entire table by the year values
 - [ ] Raises an error unless `index` is also set to `year`
@@ -223,13 +223,13 @@
 - [ ] The standard deviation of values in each row
 
 ### What is one capability `groupby().agg().unstack()` has that `pivot_table()` lacks?
-- [x] Named aggregations — `pivot_table()` does not support the `name=("col","func")` syntax
+- [x] Named aggregations; `pivot_table()` does not support the `name=("col","func")` syntax
 - [ ] Grouping by more than one column simultaneously
 - [ ] Computing a mean across groups
 - [ ] Producing a wide table layout
 
 ### Why does a pivot table make a natural input to `sns.heatmap()`?
-- [x] A pivot table is already a 2-D grid of numbers indexed by two categorical dimensions — exactly what a heatmap visualizes
+- [x] A pivot table is already a 2-D grid of numbers indexed by two categorical dimensions, exactly what a heatmap visualizes
 - [ ] Because heatmaps require a MultiIndex Series as input
 - [ ] Because pivot tables always contain exactly one column
 - [ ] They are unrelated; heatmaps require raw unaggregated data

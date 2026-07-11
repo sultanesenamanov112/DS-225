@@ -1,4 +1,4 @@
-# 08 — Data Cleaning: Glossary
+# 08 · Data Cleaning: Glossary
 
 **anchor** — A regex symbol that constrains where a match can occur. `^` matches the start of the string; `$` matches the end. Without anchors, a pattern can match anywhere inside a longer string.
 

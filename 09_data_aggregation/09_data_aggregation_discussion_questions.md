@@ -1,7 +1,7 @@
-# 09 — Data Aggregation: Discussion Questions
+# 09 · Data Aggregation: Discussion Questions
 
 ## Meet Gapminder (09.1)
-1. The global mean life expectancy across all 1,704 rows is about 59.5 years, but the mean for individual countries in 2007 alone is about 67 years. Why are these two numbers different? What does the gap reveal about the data's structure — and why would averaging all rows without grouping by year produce a number that does not accurately describe any real point in time?
+1. The global mean life expectancy across all 1,704 rows is about 59.5 years, but the mean for individual countries in 2007 alone is about 67 years. Why are these two numbers different? What does the gap reveal about the data's structure, and why would averaging all rows without grouping by year produce a number that does not accurately describe any real point in time?
 2. The Gapminder dataset has 142 countries and 12 time points, giving exactly 1,704 rows. A student wants to find all countries that appear more or fewer than 12 times, suspecting data entry errors. Write out the pandas steps you would take (in plain English or pseudocode). What would it mean if a country appeared only 6 times?
 
 ## Multiple Groupby Keys (09.2)

@@ -1,4 +1,4 @@
-# 06 — Pandas Intro: Module Outline
+# 06 · Pandas Intro: Module Outline
 
 ## Audience
 Undergrad CS and data science majors with Python experience; no prior pandas exposure.
@@ -17,6 +17,7 @@ Fetched at runtime from the course GitHub data repository.
 | 06.4 | Data Cleaning | Missing values, `.dropna()`, `.fillna()`, duplicates, rename, type conversion, `.str` |
 | 06.5 | GroupBy | Split–apply–combine, `.groupby()`, `.agg()`, multi-key grouping, reset index |
 | 06.6 | Pivot Tables & Descriptive | `pd.crosstab()`, `pd.pivot_table()`, `.corr()`, `.nlargest()`, `.nsmallest()` |
+| 06.9 | Exercises | All module 06 tools, applied to a fresh dataset (Palmer Penguins) |
 
 ## What Is Intentionally Excluded
 - `.merge()` and `.concat()` (follow-on topic)
@@ -25,4 +26,4 @@ Fetched at runtime from the course GitHub data repository.
 - Visualization (introduced in later units)
 
 ## Learning Sequence
-Series (06.1) → DataFrame (06.2) → Filtering (06.3) → Cleaning (06.4) → GroupBy (06.5) → Pivot (06.6)
+Series (06.1) → DataFrame (06.2) → Filtering (06.3) → Cleaning (06.4) → GroupBy (06.5) → Pivot (06.6) → exercises (06.9)

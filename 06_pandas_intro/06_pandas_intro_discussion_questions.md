@@ -1,4 +1,4 @@
-# 06 — Pandas Intro: Discussion Questions
+# 06 · Pandas Intro: Discussion Questions
 
 ## Series and the Index
 1. A Python list retrieves elements by position (`my_list[2]`). A pandas Series also lets you retrieve by label. When is label-based access more useful than position-based access? Give a concrete example from the Titanic dataset.

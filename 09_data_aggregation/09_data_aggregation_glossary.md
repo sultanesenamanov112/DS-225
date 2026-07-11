@@ -1,4 +1,4 @@
-# 09 — Data Aggregation: Glossary
+# 09 · Data Aggregation: Glossary
 
 **`agg()`** — A groupby method that applies one or more aggregation functions to each group and returns all results in one DataFrame. Accepts a list of function names (`["mean", "std"]`) or the named-aggregation syntax.
 

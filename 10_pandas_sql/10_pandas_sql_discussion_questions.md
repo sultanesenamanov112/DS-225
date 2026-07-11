@@ -1,4 +1,4 @@
-# 10 — pandas and SQL: Discussion Questions
+# 10 · pandas and SQL: Discussion Questions
 
 ## `df.query()` (10.1)
 1. `df.query("lifeExp > 70 and continent == 'Asia'")` and `df[(df["lifeExp"] > 70) & (df["continent"] == "Asia")]` produce the same result. Give a specific example of a filter condition that `query()` cannot express but boolean indexing can. Then give an example of a condition where `query()` is clearly more readable. What property of a condition tips the balance toward each approach?

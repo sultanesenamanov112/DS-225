@@ -1,4 +1,4 @@
-# 10 — pandas and SQL: Glossary
+# 10 · pandas and SQL: Glossary
 
 **aggregate function** — A SQL function that collapses multiple rows into a single value per group. The standard functions are `COUNT`, `AVG(col)`, `SUM(col)`, `MIN(col)`, and `MAX(col)`; `COUNT` comes in three forms (`COUNT(*)` for all rows, `COUNT(col)` for non-null values, `COUNT(DISTINCT col)` for unique values). Aggregate functions appear in `SELECT` and `HAVING`; they cannot appear in `WHERE`.
 

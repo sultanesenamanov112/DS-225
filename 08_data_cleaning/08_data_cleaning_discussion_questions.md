@@ -1,4 +1,4 @@
-# 08 — Data Cleaning: Discussion Questions
+# 08 · Data Cleaning: Discussion Questions
 
 ## What Makes Data Messy (08.1)
 1. The notebook identifies five categories of messiness: wrong types, missing values, inconsistent formatting, structural problems, and date encoding. Rank them from most to least likely to cause a *silent* error (one where pandas produces a wrong result without raising an exception). Explain your ranking.

@@ -1,4 +1,4 @@
-# 11 — Time Series: Glossary
+# 11 · Time Series: Glossary
 
 **DatetimeIndex** — A pandas index where each label is a timestamp. Created by `set_index()` on a datetime column, or in one step at load time with `pd.read_csv(..., parse_dates=[...], index_col=...)`. Enables partial string indexing, resampling, and rolling operations that require rows to be understood as points in time.
 
