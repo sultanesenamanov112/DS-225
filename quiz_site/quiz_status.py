@@ -14,9 +14,16 @@ Run this after committing quiz/notebook changes, so the git dates are accurate:
     python quiz_site/quiz_status.py
 
 It overwrites quizzes/STATUS.md. Do not hand-edit that file.
+
+With --check it writes nothing and instead exits non-zero if any module is
+stale or missing questions. CI runs this (as a warning, not a hard failure)
+so a module going stale is visible without anyone remembering to look. Note
+that staleness compares commit dates, so --check is only meaningful on a
+full clone (fetch-depth: 0 in Actions).
 """
 import re
 import subprocess
+import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
@@ -57,7 +64,7 @@ def quiz_stats(md_path: Path) -> tuple[int, int]:
     return (sections, questions)
 
 
-def main():
+def main(check_only: bool = False):
     modules = sorted(
         d for d in REPO.iterdir()
         if d.is_dir() and MODULE_DIR_RE.match(d.name)
@@ -94,6 +101,14 @@ def main():
             "status": status,
         })
 
+    if check_only:
+        for r in rows:
+            if not r["status"].startswith("✅"):
+                print(f"{r['module']}: {r['status']} "
+                      f"(questions updated {r['quiz_date']}, module updated {r['mod_date']})")
+        print(f"{ok} ok, {stale} stale, {needs} need questions")
+        return 1 if (stale or needs) else 0
+
     today = subprocess.run(
         ["git", "-C", str(REPO), "log", "-1", "--format=%cs"],
         capture_output=True, text=True,
@@ -129,7 +144,8 @@ def main():
     ]
     (QUIZZES / "STATUS.md").write_text("\n".join(lines))
     print(f"wrote quizzes/STATUS.md — {ok} ok, {stale} stale, {needs} need questions")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main(check_only="--check" in sys.argv[1:]))

@@ -2,9 +2,9 @@
 
 ## 11_1 · Time Series Basics
 
-### When pandas loads a CSV, a date column like `"2011-01-01"` arrives as `object`. Why convert it with `pd.to_datetime()`?
+### When pandas loads a CSV, a date column like `"2011-01-01"` arrives as plain text (`str` dtype). Why convert it with `pd.to_datetime()`?
 - [x] Until it is `datetime64`, you cannot do date arithmetic, extract components with `.dt`, or compare dates with `<`/`>`
-- [ ] `object` columns consume too much disk space
+- [ ] Text columns consume too much disk space
 - [ ] The conversion sorts the dates automatically as a side effect
 - [ ] It removes rows that contain invalid date strings
 
@@ -70,6 +70,12 @@
 - [ ] It always doubles the number of rows in the series
 - [ ] It leaves the row count entirely unchanged
 
+### The very first point of the weekly resampled line sits far below its neighbors. What is the most likely explanation?
+- [x] A partial bin at the edge: the series starts mid-week, so the first weekly bin covers only a couple of days
+- [ ] The program genuinely had almost no rentals in its first full week
+- [ ] `resample()` always returns `NaN`-like low values for the first bin
+- [ ] The first week's data failed to download and defaulted to zero
+
 ### What is the tradeoff as you resample from daily to weekly to monthly?
 - [x] The line gets smoother (less noise, clearer trend) but loses resolution about which specific days were unusual
 - [ ] The data becomes less accurate with coarser resolution
@@ -107,6 +113,12 @@
 - [ ] The rolling total summed over each 30-day window
 - [ ] The direction of the trend over each 30-day period
 - [ ] The number of missing values within each 30-day window
+
+### One extreme day (Hurricane Sandy, with almost no rentals) produces a spike in the 30-day rolling standard deviation that lasts a full month. Why?
+- [x] Every 30-day window that contains the outlier is inflated by it, and 30 consecutive windows contain that day
+- [ ] The storm actually affected ridership for a full month afterward
+- [ ] `rolling().std()` always smears values forward by exactly one month
+- [ ] The standard deviation formula counts each day 30 separate times
 
 ### When should you use a rolling window rather than resampling?
 - [x] When you want to overlay a smooth trend line on the raw daily data without changing the time resolution

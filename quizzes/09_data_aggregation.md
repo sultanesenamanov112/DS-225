@@ -108,6 +108,12 @@
 - [ ] They give the same answer for this particular dataset
 - [ ] `nunique()` is required before any groupby operation
 
+### `groupby("continent")["lifeExp"].max()` returns each continent's highest life expectancy, but not which country it belongs to. How does `idxmax()` solve that?
+- [x] It returns the index label of the row where each group's maximum occurs, and `df.loc[]` turns those labels back into full rows
+- [ ] It returns the country name directly as a string, skipping the index entirely
+- [ ] It sorts each group by value and keeps the top row automatically
+- [ ] It returns the integer position of the maximum, which only `.iloc[]` can use
+
 ### After a named aggregation, what kind of object do you get back?
 - [x] A plain DataFrame you can sort, filter, or pass straight to a chart (after `reset_index()`)
 - [ ] A MultiIndex Series that cannot be passed to a chart

@@ -32,6 +32,18 @@
 - [ ] Raises an error because a Series cannot be multiplied by a number
 - [ ] Modifies the `fares` Series in place and returns `None`
 
+### Two Series hold the same three passengers, but their labels are in a different order. What does `fares_paid - refunds` do?
+- [x] Pandas aligns the values by index label before subtracting, so each fare is matched with the right refund regardless of position
+- [ ] Pandas subtracts position by position, first value from first value, like two Python lists
+- [ ] Pandas raises an error because the two indexes are not in the same order
+- [ ] Pandas sorts both Series alphabetically and then subtracts position by position
+
+### When you subtract two Series and a label appears in only one of them, what happens at that label?
+- [x] The result contains `NaN` there, and the result's index is the union of both label sets
+- [ ] The label is silently dropped from the result entirely
+- [ ] Pandas fills in 0 for the missing side and computes normally
+- [ ] Pandas raises a `KeyError` naming the unmatched label
+
 ### In `ages[ages < 18]`, what is the expression `ages < 18` by itself?
 - [x] A boolean Series of `True`/`False` values, one per element
 - [ ] A single `True` or `False` describing the whole Series
@@ -182,11 +194,17 @@
 - [ ] `df.dropna()` removes duplicate rows as well as missing values
 - [ ] `df.duplicated(drop=True)` both finds and deletes them in one call
 
-### Why convert `survived`, `pclass`, and `sex` with `.astype("category")`?
+### Why convert `pclass` and `sex` with `.astype("category")`?
 - [x] They hold a small set of distinct labels, not quantities — `category` reflects their meaning and saves memory
 - [ ] It converts them into numbers so they can be averaged
 - [ ] It is required before you can group by those columns
 - [ ] It removes any missing values present in those columns
+
+### `survived` holds only the codes 0 and 1, yet the notebook deliberately leaves it as an integer instead of converting it to `category`. Why?
+- [x] Keeping it numeric is what lets `.mean()` on the column return the survival rate directly
+- [ ] Integer columns use less memory than category columns in every case
+- [ ] pandas cannot convert a 0/1 column to the `category` dtype
+- [ ] Categorical columns cannot be used as a groupby key
 
 ### A numeric column loaded as text contains a stray `"unknown"`. What does `pd.to_numeric(col, errors="coerce")` do?
 - [x] Converts valid strings to numbers and turns unparseable values like `"unknown"` into `NaN` instead of crashing

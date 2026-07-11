@@ -1,0 +1,38 @@
+name: Smoke test notebooks
+
+# Executes every notebook headlessly (the whole suite takes ~3 minutes) plus a
+# static check that committed notebooks are clean top-to-bottom runs. The
+# monthly schedule catches upstream breakage (data URLs going 404, seaborn-data
+# moving) even when the repo is idle.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**.ipynb"
+      - "requirements.txt"
+      - "smoke_test.py"
+      - "quiz_site/quiz_status.py"
+      - ".github/workflows/smoke.yml"
+  schedule:
+    - cron: "17 6 3 * *" # 06:17 UTC on the 3rd of each month
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # quiz staleness compares commit dates across history
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install pinned environment
+        run: pip install -r requirements.txt
+      - name: Execute all notebooks (includes static saved-state check)
+        run: python smoke_test.py
+      - name: Quiz staleness check (warns, never fails the build)
+        continue-on-error: true
+        run: python quiz_site/quiz_status.py --check
