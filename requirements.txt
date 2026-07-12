@@ -4,6 +4,7 @@ pandas==3.0.1
 numpy==2.4.3
 matplotlib==3.10.8
 seaborn==0.13.2
+statsmodels==0.14.6  # optional seaborn dependency; needed for regplot(lowess=True) in 07_4
 scikit-learn==1.8.0
 jupyterlab==4.5.6
 notebook==7.5.5

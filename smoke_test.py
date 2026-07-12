@@ -28,6 +28,7 @@ Exit status is non-zero if the static check or any notebook fails.
 
 import argparse
 import json
+import os
 import pathlib
 import shutil
 import subprocess
@@ -158,6 +159,20 @@ def main():
 
     failures = []
     with tempfile.TemporaryDirectory() as tmp:
+        # Two isolation measures so notebooks really execute on THIS
+        # interpreter and not whatever else lives on the machine:
+        #
+        # 1. Invoke nbconvert as `sys.executable -m nbconvert`, never
+        #    `-m jupyter nbconvert`. The latter goes through jupyter_core's
+        #    dispatcher, which finds a `jupyter-nbconvert` executable on
+        #    PATH; if ~/.local/bin holds one (shebang /usr/bin/python3), the
+        #    whole run silently switches interpreter and package set, and a
+        #    local pass proves nothing about the pinned environment. This
+        #    machine had exactly that.
+        # 2. Point JUPYTER_DATA_DIR at an empty temp dir so user-level
+        #    kernelspecs (~/.local/share/jupyter/kernels) cannot shadow the
+        #    environment's own kernel during kernel-name resolution.
+        env = dict(os.environ, JUPYTER_DATA_DIR=str(pathlib.Path(tmp) / "jupyter_data"))
         for i, nb in enumerate(nbs, 1):
             print(f"[{i}/{len(nbs)}] {nb} ... ", end="", flush=True)
             start = time.time()
@@ -167,10 +182,10 @@ def main():
                 nb_copy = work_dir / nb.name
                 shutil.copy(ROOT / nb, nb_copy)
                 proc = subprocess.run(
-                    [sys.executable, "-m", "jupyter", "nbconvert", "--to", "notebook",
+                    [sys.executable, "-m", "nbconvert", "--to", "notebook",
                      "--execute", str(nb_copy), "--output-dir", str(work_dir),
                      "--ExecutePreprocessor.timeout", str(args.timeout)],
-                    capture_output=True, text=True, timeout=args.timeout + 60,
+                    capture_output=True, text=True, timeout=args.timeout + 60, env=env,
                 )
                 ok = proc.returncode == 0
                 err = proc.stderr
